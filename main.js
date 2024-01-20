@@ -27,10 +27,7 @@
   }
 
   // 1. check query string
-  var url = window.location.href;
-  var urlObj = new URL(url);
-  var id = urlObj.searchParams.get('id');
-  var query = location.search.substring(1);
+  var query = location.hash.substring(1);
   if (query.length === 0) {
     showMainPage();
     return;
@@ -38,7 +35,7 @@
 
   // 2. get gist id and file name
   query = query.split('/');
-  var gistId = id;
+  var gistId = query[0];
   var fileName = decodeURIComponent(query[1] || '');
 
   // 3. write data to blank
